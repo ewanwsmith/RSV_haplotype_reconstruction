@@ -1,7 +1,8 @@
-# try to read in .out files to a dataframe in as few steps as possible
+# dependencies
 using DelimitedFiles
 using DataFrames
 
+# try to read in .out files to a dataframe in as few steps as possible
 function read_out_file(filename::AbstractString; delim::Char=' ')
     data = readdlm(filename, delim, Int)
     col_names = [:pos, :A, :C, :G, :T, :n]
