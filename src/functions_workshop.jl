@@ -11,7 +11,13 @@ function read_out_file(filename::AbstractString; delim::Char=' ')
 end
 
 
-#look for variants at >10% frequency
+# function to filter out positions with low coverage
+function filter_coverage(df::DataFrame, threshold::Int)
+    return filter(row -> row.n >= threshold, df)
+end
+
+
+# look for variants at >10% frequency
 function filter_positions(df::DataFrame, proportion::Float64)
     # Validate that the required columns are present in the DataFrame
     required_columns = ["A", "C", "G", "T", "n"]
