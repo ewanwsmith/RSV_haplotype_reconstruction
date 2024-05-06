@@ -70,3 +70,15 @@ function pull_variants(df::DataFrame)
     return result_df
 end
 
+# function for a mutation column
+function call_muts(df::DataFrame)
+    # Check if the required columns are present in the DataFrame
+    if !("original_base" in names(df) && "variant_base" in names(df))
+        error("DataFrame must contain 'original_base' and 'variant_base' columns")
+    end
+
+    # Create a new column 'mutation' by concatenating 'original_base', '->', and 'variant_base'
+    df.mutation = df.original_base .* "->" .* df.variant_base
+    
+    return df
+end
