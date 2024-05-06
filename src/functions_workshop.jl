@@ -41,3 +41,32 @@ function filter_positions(df::DataFrame, proportion::Float64)
     # Filter rows based on the check_proportion function
     return filter(check_proportion, df)
 end
+
+# function to pull out the variants in an easier format
+function pull_variants(df::DataFrame)
+    # Define the result DataFrame with the specified columns
+    result_df = DataFrame(pos = Int[], original_base = String[], variant_base = String[], freq = Float64[])
+    
+    # Process each row of the input DataFrame
+    for row in eachrow(df)
+        pos = row[:pos]
+        bases = [:A, :C, :G, :T]
+        counts = [row.A, row.C, row.G, row.T]
+        
+        # Sort bases by their counts in descending order
+        sorted_indices = sortperm(counts, rev=true)
+        
+        # Find the bases with the highest and second highest counts
+        highest_base = bases[sorted_indices[1]]
+        second_highest_base = bases[sorted_indices[2]]
+        
+        # Calculate the frequency of the second highest base
+        freq = counts[sorted_indices[2]] / row.n
+        
+        # Append the results to the DataFrame, converting symbols to strings
+        push!(result_df, (pos, string(highest_base), string(second_highest_base), freq))
+    end
+    
+    return result_df
+end
+
