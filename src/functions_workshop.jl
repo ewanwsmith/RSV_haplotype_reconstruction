@@ -21,6 +21,17 @@ function filter_positions(df::DataFrame, proportion::Float64)
         end
     end
     
-    # Filter rows where the maximum of A, C, G, T is less than n * proportion
-    return filter(row -> max(row.A, row.C, row.G, row.T) < row.n * proportion, df)
+    # Function to check if any of three smallest columns are greater than n * proportion
+    function check_proportion(row)
+        values = [row.A, row.C, row.G, row.T]
+        sorted_indices = sortperm(values, rev=true)  # Sort indices based on values descending
+        max_index = sorted_indices[1]                # Index of the maximum value
+        remaining_values = deleteat!(values, max_index)  # Remove the maximum value
+        
+        # Check if any remaining value exceeds n * proportion
+        return any(v -> v > row.n * proportion, remaining_values)
+    end
+    
+    # Filter rows based on the check_proportion function
+    return filter(check_proportion, df)
 end
