@@ -391,7 +391,7 @@ function parse_command_line_args()
         required = true
         arg_type = String
         "--by"
-        help = "Mode for filtering: 's' for split_sl_ns.jl, 'p' for split_sl_protein.jl"
+        help = "Mode for filtering: 's' for non-synonymous variants only, 'p' for a separate file for each protein in the reference .fasta"
         required = true
         arg_type = String
         "--out"
