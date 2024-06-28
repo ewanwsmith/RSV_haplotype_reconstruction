@@ -427,7 +427,7 @@ function main()
         protein_info = pull_fasta(fasta_path)
         split_out_file(variant_path, protein_info, out_dir)
     else
-        println("Invalid mode. Use 's' for split_sl_ns.jl or 'p' for split_sl_protein.jl")
+        println("Invalid mode. Use 's' for non-synonymous variants only, 'p' for a separate file for each protein in the reference .fasta")
     end
 end
 
