@@ -1,4 +1,6 @@
-#!/usr/bin/env julia
+# split_sl_protein.jl 
+
+#usage: ./split_sl_protein.jl --ref <path to a .fasta file with reference coding regions> --in <path to single_locus_trajectories.out file> [--out <path to desired output folder, defaults to parent folder of input file>]
 
 using Pkg
 
