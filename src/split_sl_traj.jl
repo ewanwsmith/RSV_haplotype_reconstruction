@@ -1,6 +1,4 @@
-# combined_script.jl
-
-# usage: ./combined_script.jl --ref <path to a .fasta file with reference coding regions> --in <path to single_locus_trajectories.out file> --by <s or p> [--out <path to desired output folder, defaults to parent folder of input file>]
+# split_sl_traj.jl
 
 using Pkg
 
