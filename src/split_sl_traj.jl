@@ -240,7 +240,7 @@ end
 function find_original_codons(df::DataFrame)
     codons = []
     codon_positions = []
-    for row in 1:size(df, 1)
+    for row in eachindex(df[:, 1])
         sequence = string(df[row, :Sequence])
         base_position = df[row, :adj_pos]
 
@@ -264,7 +264,7 @@ end
 # Function to find variant codons
 function find_variant_codons(df::DataFrame)
     codons = []
-    for row in 1:size(df, 1)
+    for row in eachindex(df[:, 1])
         sequence = string(df[row, :variant_sequence])
         base_position = df[row, :adj_pos]
 
