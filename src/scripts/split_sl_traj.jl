@@ -1,5 +1,3 @@
-# split_sl_traj.jl
-
 using Pkg
 
 # Add necessary packages
@@ -88,9 +86,9 @@ function split_out_file(out_file::String, protein_info::DataFrame, out_dir::Stri
     println(out_data)
     
     for row in eachrow(protein_info)
-        protein_name = replace(replace(row[:protein], " " => "_"), r"[()]" => "")
-        start_pos = row[:start_pos]
-        end_pos = row[:end_pos]
+        protein_name = replace(replace(row[:Protein], " " => "_"), r"[()]" => "")
+        start_pos = row[:Start]
+        end_pos = row[:End]
 
         # Filter rows where locus is between start and stop positions
         filtered_data = filter(row -> row[:locus] >= start_pos && row[:locus] <= end_pos, out_data)
@@ -161,7 +159,7 @@ function call_proteins(variants_df::DataFrame, fasta_df::DataFrame)
         pos = variant[:pos]  # Accessing the 'pos' column in variants_df
 
         # Filter fasta_df to find rows where 'pos' is between 'Start' and 'End'
-        matches = filter(row -> row[:start_pos] <= pos <= row[:end_pos], fasta_df)
+        matches = filter(row -> row[:Start] <= pos <= row[:End], fasta_df)
 
         # For each match, concatenate the row from variants_df with the row from fasta_df
         for match in eachrow(matches)
@@ -183,10 +181,10 @@ function convert_variant_columns!(variants::DataFrame)
     # Convert 'original_base', 'variant_base', and 'Sequence' to String
     variants.original_base = string.(variants.original_base)
     variants.variant_base = string.(variants.variant_base)
-    variants.sequence = string.(variants.sequence)
+    variants.Sequence = string.(variants.Sequence)
     
     # Convert 'Protein' to categorical
-    variants.protein = categorical(variants.protein)
+    variants.Protein = categorical(variants.Protein)
     
     # Convert 'Start' and 'End' to Int64 if they're not already integers
     variants.Start = variants.Start isa AbstractArray{Int} ? variants.Start : parse.(Int, string.(variants.Start))
@@ -196,7 +194,7 @@ end
 # create variant sequence
 function substitute_variants(dataframe::DataFrame)
     # Create a new column for Base_Position
-    dataframe.adj_pos = dataframe.pos .- dataframe.start_pos
+    dataframe.adj_pos = dataframe.pos .- dataframe.Start
 
     # Create a new column for variant_sequence
     dataframe.variant_sequence = Vector{String}(undef, nrow(dataframe))
@@ -204,7 +202,7 @@ function substitute_variants(dataframe::DataFrame)
     # Iterate over each row in the DataFrame
     for i in 1:nrow(dataframe)
         # Extract the original sequence
-        sequence = string(dataframe[i, :sequence])
+        sequence = string(dataframe[i, :Sequence])
 
         # Extract the variant position
         adjusted_variant_position = dataframe[i, :adj_pos]
@@ -232,7 +230,7 @@ function substitute_variants(dataframe::DataFrame)
 end
 
 # Function to split a DNA sequence into codons
-function split_into_codons(sequence)
+function split_into_codons(sequence::String)
     return [sequence[i:i+2] for i in 1:3:length(sequence)-2]
 end
 
@@ -241,7 +239,7 @@ function find_original_codons(df::DataFrame)
     codons = []
     codon_positions = []
     for row in eachindex(df[:, 1])
-        sequence = string(df[row, :sequence])
+        sequence = string(df[row, :Sequence])
         base_position = df[row, :adj_pos]
 
         if base_position < 1 || base_position > length(sequence)
@@ -282,7 +280,7 @@ function find_variant_codons(df::DataFrame)
 end
 
 # Function to map codons to amino acids
-function codon_to_aa(codon)
+function codon_to_aa(codon::String)
     codon_dict = Dict("TTT" => "F", "TTC" => "F", "TTA" => "L", "TTG" => "L",
                       "CTT" => "L", "CTC" => "L", "CTA" => "L", "CTG" => "L",
                       "ATT" => "I", "ATC" => "I", "ATA" => "I", "ATG" => "M",
@@ -304,7 +302,7 @@ function codon_to_aa(codon)
 end
 
 # Function to translate original & variant codons and determine synonymity
-function translate_codons(df)
+function translate_codons(df::DataFrame)
     df.original_aa = map(codon_to_aa, df.original_codon)
     df.variant_aa = map(codon_to_aa, df.variant_codon)
     df.is_synonymous = ifelse.(df.original_aa .== df.variant_aa, "Yes", "No")
@@ -366,10 +364,10 @@ function pull_fasta(fasta_path::String)
 
     # Create a DataFrame from the extracted data
     fasta_df = DataFrame(
-        protein = replace.(proteins, r"[()]" => ""),
-        start_pos = starts,
-        end_pos = ends,
-        sequence = sequences
+        Protein = replace.(proteins, r"[()]" => ""),
+        Start = starts,
+        End = ends,
+        Sequence = sequences
     )
 
     println("Fasta file processed successfully.")
@@ -391,7 +389,7 @@ function parse_command_line_args()
         required = true
         arg_type = String
         "--by"
-        help = "Mode for filtering: 's' for non-synonymous variants only, 'p' for a separate file for each protein in the reference .fasta"
+        help = "Mode for filtering: 's' for non-synonymous variants only, 'p' for a separate file for each protein in the reference .fasta, 'b' for running both modes sequentially"
         required = true
         arg_type = String
         "--out"
@@ -402,6 +400,22 @@ function parse_command_line_args()
     return parse_args(Base.ARGS, s)
 end
 
+function run_mode_s(fasta_path::String, variant_path::String)
+    fasta_df = read_fasta_to_dataframe(fasta_path)
+    variants = read_out_file(variant_path)
+    variants = call_proteins(variants, fasta_df)
+    convert_variant_columns!(variants)
+    variants = substitute_variants(variants)
+    variants = find_original_codons(variants)
+    variants = find_variant_codons(variants)
+    variants = translate_codons(variants)
+
+    # filter by synonymity 
+    ns_variants = filter(row -> row[:is_synonymous] == "No", variants)
+
+    return filter_outfile(ns_variants, variant_path)
+end
+
 function main()
     args = parse_command_line_args()
     fasta_path = args["ref"]
@@ -410,24 +424,16 @@ function main()
     out_dir = args["out"] == "" ? dirname(variant_path) : args["out"]
 
     if mode == "s"
-        fasta_df = read_fasta_to_dataframe(fasta_path)
-        variants = read_out_file(variant_path)
-        variants = call_proteins(variants, fasta_df)
-        convert_variant_columns!(variants)
-        variants = substitute_variants(variants)
-        variants = find_original_codons(variants)
-        variants = find_variant_codons(variants)
-        variants = translate_codons(variants)
-
-        # filter by synonymity 
-        ns_variants = filter(row -> row[:is_synonymous] == "No", variants)
-
-        filter_outfile(ns_variants, variant_path)
+        run_mode_s(fasta_path, variant_path)
     elseif mode == "p"
         protein_info = pull_fasta(fasta_path)
         split_out_file(variant_path, protein_info, out_dir)
+    elseif mode == "b"
+        ns_variant_path = run_mode_s(fasta_path, variant_path)
+        protein_info = pull_fasta(fasta_path)
+        split_out_file(ns_variant_path, protein_info, out_dir)
     else
-        println("Invalid mode. Use 's' for non-synonymous variants only, 'p' for a separate file for each protein in the reference .fasta")
+        println("Invalid mode. Use 's' for non-synonymous variants only, 'p' for a separate file for each protein in the reference .fasta, 'b' for running both modes sequentially")
     end
 end
 
