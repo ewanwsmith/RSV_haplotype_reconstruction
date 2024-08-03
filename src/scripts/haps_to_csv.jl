@@ -28,15 +28,39 @@ function parse_out_file(out_path::String)
     frequencies = []
 
     open(out_path, "r") do file
+        first_line = readline(file)
+        # Check if the first line fits the expected format
+        if !occursin(r"^[A-Z]", first_line)
+            # The first line doesn't fit the expected format, so we skip it
+            println("Skipping the first line as it doesn't fit the expected format")
+        else
+            # The first line fits the expected format, so we process it
+            haplotype_freq_str = split(first_line, r"(?<=[0-9e\.-])(?=[A-Z])")
+            for haplotype_freq in haplotype_freq_str
+                haplotype = match(r"[A-Z]+", haplotype_freq).match
+                freqs_str = replace(haplotype_freq, haplotype => "")
+                freqs = tryparse.(Float64, filter(x -> !isempty(x), split(freqs_str, r"\s+")))
+                if any(isnothing, freqs)
+                    println("Skipping invalid line with non-numeric frequency values")
+                    continue
+                end
+                freqs = [x for x in freqs if x !== nothing]  # Remove `nothing` values
+                push!(haplotypes, haplotype)
+                push!(frequencies, freqs)
+            end
+        end
+
         for line in eachline(file)
-            # Split the line by a regex that captures the boundary between a number and a letter
             haplotype_freq_str = split(line, r"(?<=[0-9e\.-])(?=[A-Z])")
             for haplotype_freq in haplotype_freq_str
-                # Extract the haplotype sequence
                 haplotype = match(r"[A-Z]+", haplotype_freq).match
-                # Replace the haplotype part with an empty string and then split the remaining frequencies
                 freqs_str = replace(haplotype_freq, haplotype => "")
-                freqs = parse.(Float64, filter(x -> !isempty(x), split(freqs_str, r"\s+")))
+                freqs = tryparse.(Float64, filter(x -> !isempty(x), split(freqs_str, r"\s+")))
+                if any(isnothing, freqs)
+                    println("Skipping invalid line with non-numeric frequency values")
+                    continue
+                end
+                freqs = [x for x in freqs if x !== nothing]  # Remove `nothing` values
                 push!(haplotypes, haplotype)
                 push!(frequencies, freqs)
             end
