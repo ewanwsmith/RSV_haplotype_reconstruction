@@ -2,22 +2,38 @@
 
 # Function to display usage information
 usage() {
-    echo "Usage: $0 -i input.fasta -o output.fasta -s start -e end"
+    echo "Usage: $0 -i input.fasta -o output.fasta -s start -e end [-z y|n]"
+    echo
+    echo "Arguments:"
+    echo "  -i input.fasta    Input FASTA file."
+    echo "  -o output.fasta   Output FASTA file."
+    echo "  -s start          Start position (1-based indexing by default)."
+    echo "  -e end            End position (1-based indexing by default)."
+    echo "  -z y|n            Adjust for zero-based indexing. Use 'y' for yes, 'n' for no (default: n)."
     exit 1
 }
 
+# Set default value for zero-based indexing adjustment
+zero_based="n"
+
 # Parse command line arguments
-while getopts ":i:o:s:e:" opt; do
+while getopts ":i:o:s:e:z:" opt; do
     case $opt in
         i) input_file="$OPTARG" ;;
         o) output_file="$OPTARG" ;;
         s) start="$OPTARG" ;;
         e) end="$OPTARG" ;;
+        z) zero_based="$OPTARG" ;;
         *) usage ;;
     esac
 done
 
-# Check if all arguments are provided
+# If no arguments are provided, display usage information
+if [[ $# -eq 0 ]]; then
+    usage
+fi
+
+# Check if all mandatory arguments are provided
 if [[ -z "$input_file" || -z "$output_file" || -z "$start" || -z "$end" ]]; then
     usage
 fi
@@ -28,9 +44,11 @@ if ! [[ "$start" =~ ^[0-9]+$ ]] || ! [[ "$end" =~ ^[0-9]+$ ]] || [[ "$start" -ge
     exit 1
 fi
 
-# Adjust for zero-based indexing (optional, depending on your requirements)
-start=$((start - 1))
-end=$((end - 1))
+# Adjust for zero-based indexing if needed
+if [[ "$zero_based" == "y" ]]; then
+    start=$((start - 1))
+    end=$((end - 1))
+fi
 
 # Process the input FASTA file
 {
