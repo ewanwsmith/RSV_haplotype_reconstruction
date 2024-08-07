@@ -13,7 +13,7 @@ folder_path=$1
 output_file="$folder_path/extracted_bic.csv"
 
 # Write the header to the CSV file
-echo "Run,BIC" > "$output_file"
+echo "n_haps,BIC" > "$output_file"
 
 # Loop through all .out files in the specified directory
 for file in "$folder_path"/*.out; do
@@ -26,14 +26,14 @@ for file in "$folder_path"/*.out; do
     # Get the base name of the file (without path)
     file_name=$(basename "$file")
     # Extract the run number from the filename
-    run_number=$(echo "$file_name" | awk -F'_' '{print $2}')
+    n_haps=$(echo "$file_name" | awk -F'_' '{print $2}')
     # Check if the number was found
     if [ -n "$bic_number" ]; then
-      # Write the run number and BIC number to the CSV file
-      echo "$run_number,$bic_number" >> "$output_file"
+      # Write the n_haps number and BIC number to the CSV file
+      echo "$n_haps,$bic_number" >> "$output_file"
     else
-      # Write the run number and "N/A" to the CSV file if no number was found
-      echo "$run_number,N/A" >> "$output_file"
+      # Write the n_haps number and "N/A" to the CSV file if no number was found
+      echo "$n_haps,N/A" >> "$output_file"
     fi
   fi
 done
