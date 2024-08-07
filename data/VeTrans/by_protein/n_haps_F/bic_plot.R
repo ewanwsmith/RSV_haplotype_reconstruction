@@ -2,7 +2,7 @@ library(csv)
 library(ggplot2)
 
 # Read the CSV file
-bic = read.csv("data/VeTrans/by_protein/n_haps_F/extracted_bic.csv")
+bic = read.csv("/Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/VeTrans/by_protein/n_haps_F/extracted_bic.csv")
 
 # Create the plot
 bic_plot = ggplot(bic, aes(x = Run, y = BIC)) +
