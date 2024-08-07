@@ -39,3 +39,11 @@ for file in "$folder_path"/*.out; do
 done
 
 echo "Extraction complete. Results saved in $output_file."
+
+# Check if bic_plot.R exists in the folder
+if [ -f "$folder_path/bic_plot.R" ]; then
+  echo "bic_plot.R found. Running the script."
+  Rscript "$folder_path/bic_plot.R" "$output_file"
+else
+  echo "bic_plot.R not found. Skipping the R script execution."
+fi
