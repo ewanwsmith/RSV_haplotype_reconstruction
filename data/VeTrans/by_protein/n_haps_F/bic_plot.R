@@ -12,7 +12,7 @@ bic_plot = ggplot(bic, aes(x = Run, y = BIC)) +
   theme_minimal()
 
 # Define the path for saving the plot
-output_file = "data/VeTrans/by_protein/n_haps_F/bic_plot.jpeg"
+output_file = "/Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/VeTrans/by_protein/n_haps_F/bic_plot.jpeg"
 
 # Save the plot as a .jpeg file
 ggsave(output_file, plot = bic_plot, width = 8, height = 6)
