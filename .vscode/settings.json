@@ -1,4 +1,12 @@
 {
     "BioSyntax.autoSwitchTheme": false,
-    "BioSyntax.nonBioTheme": "BioSyntax"
+    "BioSyntax.nonBioTheme": "BioSyntax",
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "/myfile"
+            ],
+            "url": "schemaURL"
+        }
+    ]
 }
