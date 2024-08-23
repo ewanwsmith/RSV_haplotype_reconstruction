@@ -1,0 +1,120 @@
+IQ-TREE multicore version 2.3.5 for MacOS ARM 64-bit built Jun 26 2024
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor, Heiko Schmidt,
+Dominik Schrempf, Michael Woodhams, Ly Trong Nhan, Thomas Wong
+
+Host:    MVLS-MACLAP614AF5 (SSE4.2, 64 GB RAM)
+Command: iqtree2 -s /Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/iqtree/F_haplotypes/14/Consensus0_F_14_haplotypes.fa -m JC -nt AUTO -pre /Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/iqtree/F_haplotypes/14/Consensus0_F_14_haplotypes_JC
+Seed:    481140 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Fri Aug 23 13:39:20 2024
+Kernel:  SSE2 - auto-detect threads (16 CPU cores detected)
+
+Reading alignment file /Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/iqtree/F_haplotypes/14/Consensus0_F_14_haplotypes.fa ... Fasta format detected
+Reading fasta file: done in 0.000416994 secs using 89.21% CPU
+Alignment most likely contains DNA/RNA sequences
+Alignment has 14 sequences with 1725 columns, 27 distinct patterns
+8 parsimony-informative, 16 singleton sites, 1701 constant sites
+                            Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 9.799e-05 secs using 64.29% CPU
+   1  GGGCCCCCAATAAGCAATAACAAAGG    0.00%    passed     99.99%
+   2  GGGTCCCCGAGAAACAACAACAAAGA    0.00%    passed     99.99%
+   3  GGGCCCCCGAGAGACAACAACAAAGA    0.00%    passed     99.99%
+   4  GGGCCCCCGAGAAACAATAACAAAGA    0.00%    passed     99.99%
+   5  GGGCCCCCGAGAAACAGCAACAAAGA    0.00%    passed     99.99%
+   6  GGGCCCCCGAGAAACTACAACAAAGA    0.00%    passed    100.00%
+   7  GGTCCCCCGAGCAACAGCAACAAAGA    0.00%    passed     99.98%
+   8  GAGCCTCCGAGAAAATGCACCAAGGG    0.00%    passed     99.94%
+   9  GGTCCCTCGAGCAACAACAACAAAAA    0.00%    passed     99.90%
+  10  GGGCCCCCGGGAAACAACAACAAAGA    0.00%    passed     99.99%
+  11  GGGCCCCTGAGGAACAACAATAGAGG    0.00%    passed     99.81%
+  12  GGGCCCCCGAGAAACAACAACAAAGA    0.00%    passed     99.99%
+  13  GAGCCCCCGAGCAACTACAACAAAGA    0.00%    passed     99.96%
+  14  GGGCTCCCGAGAAAAAACATCGAAGA    0.00%    passed     99.97%
+****  TOTAL                         0.00%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.000 seconds
+
+NOTE: 0 MB RAM (0 GB) is required!
+Measuring multi-threading efficiency up to 16 CPU cores
+Increase to 10 rounds for branch lengths
+138520 trees examined
+Threads: 1 / Time: 16.000 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -2703
+Threads: 2 / Time: 96.962 sec / Speedup: 0.165 / Efficiency: 8% / LogL: -2703
+BEST NUMBER OF THREADS: 1
+
+Estimate model parameters (epsilon = 0.100)
+1. Initial log-likelihood: -2664.329
+Optimal log-likelihood: -2664.329
+Rate parameters:  A-C: 1.00000  A-G: 1.00000  A-T: 1.00000  C-G: 1.00000  C-T: 1.00000  G-T: 1.00000
+Base frequencies:  A: 0.250  C: 0.250  G: 0.250  T: 0.250
+Parameters optimization took 1 rounds (0.000 sec)
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 0.000167131 secs using 97.53% CPU
+Computing ML distances took 0.000193 sec (of wall-clock time) 0.000175 sec (of CPU time)
+Setting up auxiliary I and S matrices: done in 1.5974e-05 secs using 68.86% CPU
+Computing RapidNJ tree took 0.000065 sec (of wall-clock time) 0.000041 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -2662.450
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 0.009 second
+Computing log-likelihood of 98 initial trees ... 0.006 seconds
+Current best score: -2662.422
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -2662.422
+BETTER TREE FOUND at iteration 2: -2662.422
+Iteration 10 / LogL: -2662.422 / Time: 0h:1m:52s
+Iteration 20 / LogL: -2662.426 / Time: 0h:1m:53s
+Finish initializing candidate tree set (20)
+Current best tree score: -2662.422 / CPU time: 0.025
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Iteration 30 / LogL: -2662.422 / Time: 0h:1m:53s (0h:4m:40s left)
+Iteration 40 / LogL: -2662.431 / Time: 0h:1m:53s (0h:2m:59s left)
+BETTER TREE FOUND at iteration 44: -2662.422
+Iteration 50 / LogL: -2662.428 / Time: 0h:1m:53s (0h:3m:36s left)
+Iteration 60 / LogL: -2662.432 / Time: 0h:1m:53s (0h:2m:40s left)
+Iteration 70 / LogL: -2662.427 / Time: 0h:1m:53s (0h:2m:1s left)
+BETTER TREE FOUND at iteration 78: -2662.422
+Iteration 80 / LogL: -2662.422 / Time: 0h:1m:53s (0h:2m:20s left)
+Iteration 90 / LogL: -2662.422 / Time: 0h:1m:53s (0h:1m:51s left)
+Iteration 100 / LogL: -2662.427 / Time: 0h:1m:53s (0h:1m:29s left)
+Iteration 110 / LogL: -2662.422 / Time: 0h:1m:53s (0h:1m:10s left)
+Iteration 120 / LogL: -2662.427 / Time: 0h:1m:53s (0h:0m:55s left)
+Iteration 130 / LogL: -2662.422 / Time: 0h:1m:53s (0h:0m:42s left)
+Iteration 140 / LogL: -2662.424 / Time: 0h:1m:53s (0h:0m:30s left)
+Iteration 150 / LogL: -2662.427 / Time: 0h:1m:53s (0h:0m:21s left)
+Iteration 160 / LogL: -2662.422 / Time: 0h:1m:53s (0h:0m:12s left)
+Iteration 170 / LogL: -2662.426 / Time: 0h:1m:53s (0h:0m:5s left)
+TREE SEARCH COMPLETED AFTER 179 ITERATIONS / Time: 0h:1m:53s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -2662.422
+Optimal log-likelihood: -2662.422
+Rate parameters:  A-C: 1.00000  A-G: 1.00000  A-T: 1.00000  C-G: 1.00000  C-T: 1.00000  G-T: 1.00000
+Base frequencies:  A: 0.250  C: 0.250  G: 0.250  T: 0.250
+Parameters optimization took 1 rounds (0.000 sec)
+BEST SCORE FOUND : -2662.422
+Total tree length: 0.019
+
+Total number of iterations: 179
+CPU time used for tree search: 0.101 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.117 sec (0h:0m:0s)
+Total CPU time used: 56.779 sec (0h:0m:56s)
+Total wall-clock time used: 113.099 sec (0h:1m:53s)
+
+Analysis results written to: 
+  IQ-TREE report:                /Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/iqtree/F_haplotypes/14/Consensus0_F_14_haplotypes_JC.iqtree
+  Maximum-likelihood tree:       /Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/iqtree/F_haplotypes/14/Consensus0_F_14_haplotypes_JC.treefile
+  Likelihood distances:          /Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/iqtree/F_haplotypes/14/Consensus0_F_14_haplotypes_JC.mldist
+  Screen log file:               /Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/iqtree/F_haplotypes/14/Consensus0_F_14_haplotypes_JC.log
+
+Date and Time: Fri Aug 23 13:41:13 2024
