@@ -2,7 +2,7 @@ IQ-TREE 2.3.5 built Jun 26 2024
 
 Input file name: /Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/iqtree/F_haplotypes/14/Consensus0_F_14_haplotypes.fa
 Type of analysis: tree reconstruction
-Random seed number: 481140
+Random seed number: 582511
 
 REFERENCES
 ----------
@@ -65,39 +65,39 @@ Sum of internal branch lengths: 0.0035 (18.7541% of tree length)
 WARNING: 6 near-zero internal branches (<0.0006) should be treated with caution
          Such branches are denoted by '**' in the figure below
 
-NOTE: Tree is UNROOTED although outgroup taxon 'GGGCCCCCAATAAGCAATAACAAAGG' is drawn at root
+NOTE: Tree is UNROOTED although outgroup taxon 'GGGCCCCCGAGAAACAACAACAAAGA' is drawn at root
 
-+-------------------------GGGCCCCCAATAAGCAATAACAAAGG
+          +----------------------------GGGCCCCCAATAAGCAATAACAAAGG
+   +------|
+   |      +**GGGCCCCCGAGAAACAATAACAAAGA
++**|
+|  +------------------------------------GGGCCCCTGAGGAACAACAATAGAGG
 |
-|              +-----GGGTCCCCGAGAAACAACAACAAAGA
-|           +**|
-|           |  |     +**GGGCCCCCGAGAAACTACAACAAAGA
-|           |  +-----|
-|           |        |     +---------------------------------------GAGCCTCCGAGAAAATGCACCAAGGG
-|           |        +-----|
-|           |              +-----GAGCCCCCGAGCAACTACAACAAAGA
-|        +**|
-|        |  |     +-----GGGCCCCCGAGAGACAACAACAAAGA
-|        |  |  +**|
-|        |  |  |  +-------------------------GGGCTCCCGAGAAAAAACATCGAAGA
-|        |  +**|
-|        |     +**GGGCCCCCGAGAAACAACAACAAAGA
+|     +------GGGTCCCCGAGAAACAACAACAAAGA
+|  +**|
+|  |  +------GGGCCCCCGAGAGACAACAACAAAGA
++**|
+|  |            +**GGGCCCCCGAGAAACAGCAACAAAGA
+|  |     +------|
+|  |     |      |             +**GGTCCCCCGAGCAACAGCAACAAAGA
+|  |     |      +-------------|
+|  |     |                    +---------------------GGTCCCTCGAGCAACAACAACAAAAA
+|  |  +**|
+|  |  |  |      +**GGGCCCCCGAGAAACTACAACAAAGA
+|  |  |  +------|
+|  |  |         |      +-------------------------------------------GAGCCTCCGAGAAAATGCACCAAGGG
+|  |  |         +------|
+|  |  |                +------GAGCCCCCGAGCAACTACAACAAAGA
+|  +**|
+|     |  +------GGGCCCCCGGGAAACAACAACAAAGA
 |     +**|
-|     |  |        +**GGGCCCCCGAGAAACAGCAACAAAGA
-|     |  |  +-----|
-|     |  |  |     |            +**GGTCCCCCGAGCAACAGCAACAAAGA
-|     |  |  |     +------------|
-|     |  |  |                  +------------------GGTCCCTCGAGCAACAACAACAAAAA
-|     |  +**|
-|     |     +-----GGGCCCCCGGGAAACAACAACAAAGA
-+-----|
-|     +--------------------------------GGGCCCCTGAGGAACAACAATAGAGG
+|        +----------------------------GGGCTCCCGAGAAAAAACATCGAAGA
 |
-+**GGGCCCCCGAGAAACAATAACAAAGA
++**GGGCCCCCGAGAAACAACAACAAAGA
 
 Tree in newick format:
 
-(GGGCCCCCAATAAGCAATAACAAAGG:0.0023224327,((((GGGTCCCCGAGAAACAACAACAAAGA:0.0005799343,(GGGCCCCCGAGAAACTACAACAAAGA:0.0000010000,(GAGCCTCCGAGAAAATGCACCAAGGG:0.0034875814,GAGCCCCCGAGCAACTACAACAAAGA:0.0005800526):0.0005800353):0.0005799343):0.0000010000,((GGGCCCCCGAGAGACAACAACAAAGA:0.0005799343,GGGCTCCCGAGAAAAAACATCGAAGA:0.0023224327):0.0000010000,GGGCCCCCGAGAAACAACAACAAAGA:0.0000010000):0.0000010000):0.0000010000,((GGGCCCCCGAGAAACAGCAACAAAGA:0.0000010000,(GGTCCCCCGAGCAACAGCAACAAAGA:0.0000010000,GGTCCCTCGAGCAACAACAACAAAAA:0.0017411499):0.0011603174):0.0005799343,GGGCCCCCGGGAAACAACAACAAAGA:0.0005799343):0.0000010000):0.0000010000,GGGCCCCTGAGGAACAACAATAGAGG:0.0029041663):0.0005799343,GGGCCCCCGAGAAACAATAACAAAGA:0.0000010000);
+(((GGGCCCCCAATAAGCAATAACAAAGG:0.0023224327,GGGCCCCCGAGAAACAATAACAAAGA:0.0000010000):0.0005799343,GGGCCCCTGAGGAACAACAATAGAGG:0.0029041663):0.0000010000,((GGGTCCCCGAGAAACAACAACAAAGA:0.0005799343,GGGCCCCCGAGAGACAACAACAAAGA:0.0005799343):0.0000010000,(((GGGCCCCCGAGAAACAGCAACAAAGA:0.0000010000,(GGTCCCCCGAGCAACAGCAACAAAGA:0.0000010000,GGTCCCTCGAGCAACAACAACAAAAA:0.0017411499):0.0011603174):0.0005799343,(GGGCCCCCGAGAAACTACAACAAAGA:0.0000010000,(GAGCCTCCGAGAAAATGCACCAAGGG:0.0034875814,GAGCCCCCGAGCAACTACAACAAAGA:0.0005800526):0.0005800353):0.0005799343):0.0000010000,(GGGCCCCCGGGAAACAACAACAAAGA:0.0005799343,GGGCTCCCGAGAAAAAACATCGAAGA:0.0023224327):0.0000010000):0.0000010000):0.0000010000,GGGCCCCCGAGAAACAACAACAAAGA:0.0000010000);
 
 ALISIM COMMAND
 --------------
@@ -118,7 +118,7 @@ For more information on using AliSim, please visit: www.iqtree.org/doc/AliSim
 TIME STAMP
 ----------
 
-Date and time: Fri Aug 23 13:41:13 2024
-Total CPU time used: 56.779 seconds (0h:0m:56s)
-Total wall-clock time used: 113.105 seconds (0h:1m:53s)
+Date and time: Sat Aug 24 01:40:56 2024
+Total CPU time used: 57.4444 seconds (0h:0m:57s)
+Total wall-clock time used: 105.215 seconds (0h:1m:45s)
 
