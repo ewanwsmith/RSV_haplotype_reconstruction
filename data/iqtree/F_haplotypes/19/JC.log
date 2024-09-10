@@ -1,0 +1,140 @@
+IQ-TREE multicore version 2.3.5 for MacOS ARM 64-bit built Jun 26 2024
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor, Heiko Schmidt,
+Dominik Schrempf, Michael Woodhams, Ly Trong Nhan, Thomas Wong
+
+Host:    MVLS-MACLAP614AF5 (SSE4.2, 64 GB RAM)
+Command: iqtree2 -s /Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/iqtree/F_haplotypes/19/Consensus0_F_19_haplotypes.fa -m JC -nt AUTO -pre JC
+Seed:    486795 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Tue Sep 10 15:24:07 2024
+Kernel:  SSE2 - auto-detect threads (16 CPU cores detected)
+
+Reading alignment file /Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/iqtree/F_haplotypes/19/Consensus0_F_19_haplotypes.fa ... Fasta format detected
+Reading fasta file: done in 0.000441074 secs using 88.65% CPU
+Alignment most likely contains DNA/RNA sequences
+Alignment has 19 sequences with 1725 columns, 12 distinct patterns
+5 parsimony-informative, 3 singleton sites, 1717 constant sites
+                            Gap/Ambiguity  Composition  p-value
+Analyzing sequences: done in 5.6982e-05 secs using 66.69% CPU
+   1  GGGCCCCCGGGAAACTACAACAAAGA    0.00%    passed    100.00%
+   2  GGGCTCCCGAGAAACAATAACGAGGA    0.00%    passed    100.00%
+   3  AAGCCCCCAATAAGCAACAACAAAGA    0.00%    passed     99.94%
+   4  GGGCCCTCGAGCAACAGCAACAGAGG    0.00%    passed    100.00%
+   5  GGGCCCCCGGGAGACTACAATAAAGA    0.00%    passed    100.00%
+   6  GGGTCCCTGAGGAACAACAACAAAGA    0.00%    passed     99.97%
+   7  GGGCCCCCGAGAGACTACAACAAAGA    0.00%    passed    100.00%
+   8  GGGTCCCCGAGAGACAACAACAAAAG    0.00%    passed    100.00%
+   9  GGGTTCTCGAGAAACAACAATAGAGA    0.00%    passed     99.86%
+  10  GGGCCCCTGAGAGACAGCAATGAAAA    0.00%    passed    100.00%
+  11  GGGCCCCCGGGAAACAATAACGAAGA    0.00%    passed    100.00%
+  12  GAGCCCCCGAGAAACAACAACAAAGA    0.00%    passed     99.99%
+  13  GGGCCCCCGAGCAACAATAACAAAGA    0.00%    passed    100.00%
+  14  GGGCCTTTGGGAGACAACATCGAAGA    0.00%    passed     99.86%
+  15  GGGCCCCCGAGAAACTACAACAAAGA    0.00%    passed    100.00%
+  16  GGGCCCCCGAGAAACAACAACAAAGA    0.00%    passed    100.00%
+  17  GGTCCCCCGAGCAACAACAACAAAGA    0.00%    passed     99.99%
+  18  GGGCCCCCGAGAAACAGCAACAAAGA    0.00%    passed    100.00%
+  19  GGGCCCCCGGGAAACAGCAACAGAGA    0.00%    passed    100.00%
+****  TOTAL                         0.00%  0 sequences failed composition chi2 test (p-value<5%; df=3)
+NOTE: GGGCCCCCGGGAGACTACAATAAAGA is identical to GGGCCCCCGGGAAACTACAACAAAGA but kept for subsequent analysis
+NOTE: 7 identical sequences (see below) will be ignored for subsequent analysis
+NOTE: GGGCCCCCGAGAGACTACAACAAAGA (identical to GGGCCCCCGGGAAACTACAACAAAGA) is ignored but added at the end
+NOTE: GGGCCCCCGGGAAACAATAACGAAGA (identical to GGGCCCCCGGGAAACTACAACAAAGA) is ignored but added at the end
+NOTE: GGGCCCCCGAGCAACAATAACAAAGA (identical to GGGCCCCCGGGAAACTACAACAAAGA) is ignored but added at the end
+NOTE: GGGCCCCCGAGAAACTACAACAAAGA (identical to GGGCCCCCGGGAAACTACAACAAAGA) is ignored but added at the end
+NOTE: GGGCCCCCGAGAAACAACAACAAAGA (identical to GGGCCCCCGGGAAACTACAACAAAGA) is ignored but added at the end
+NOTE: GGGCCCCCGAGAAACAGCAACAAAGA (identical to GGGCCCCCGGGAAACTACAACAAAGA) is ignored but added at the end
+NOTE: GGGCCCCCGGGAAACAGCAACAGAGA (identical to GGGCCCCCGGGAAACTACAACAAAGA) is ignored but added at the end
+Alignment was printed to JC.uniqueseq.phy
+
+For your convenience alignment with unique sequences printed to JC.uniqueseq.phy
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.000 seconds
+
+NOTE: 0 MB RAM (0 GB) is required!
+Measuring multi-threading efficiency up to 16 CPU cores
+Increase to 10 rounds for branch lengths
+181052 trees examined
+Threads: 1 / Time: 16.000 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -2535
+WARNING: 2 threads for alignment length 12 will slow down analysis
+Threads: 2 / Time: 8.026 sec / Speedup: 1.994 / Efficiency: 100% / LogL: -2535
+WARNING: 3 threads for alignment length 12 will slow down analysis
+Threads: 3 / Time: 8.066 sec / Speedup: 1.984 / Efficiency: 66% / LogL: -2535
+WARNING: 4 threads for alignment length 12 will slow down analysis
+Threads: 4 / Time: 8.068 sec / Speedup: 1.983 / Efficiency: 50% / LogL: -2535
+BEST NUMBER OF THREADS: 2
+
+WARNING: 2 threads for alignment length 12 will slow down analysis
+Estimate model parameters (epsilon = 0.100)
+1. Initial log-likelihood: -2503.219
+Optimal log-likelihood: -2503.219
+Rate parameters:  A-C: 1.00000  A-G: 1.00000  A-T: 1.00000  C-G: 1.00000  C-T: 1.00000  G-T: 1.00000
+Base frequencies:  A: 0.250  C: 0.250  G: 0.250  T: 0.250
+Parameters optimization took 1 rounds (0.000 sec)
+Wrote distance file to... 
+Computing ML distances based on estimated model parameters...
+Calculating distance matrix: done in 8.82149e-05 secs using 174.6% CPU
+Computing ML distances took 0.000156 sec (of wall-clock time) 0.000184 sec (of CPU time)
+Setting up auxiliary I and S matrices: done in 3.29018e-05 secs using 51.67% CPU
+Computing RapidNJ tree took 0.000308 sec (of wall-clock time) 0.000119 sec (of CPU time)
+Log-likelihood of RapidNJ tree: -2503.242
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 0.008 second
+Computing log-likelihood of 98 initial trees ... 0.007 seconds
+Current best score: -2503.219
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -2503.219
+BETTER TREE FOUND at iteration 4: -2503.219
+Iteration 10 / LogL: -2503.219 / Time: 0h:0m:40s
+Iteration 20 / LogL: -2503.219 / Time: 0h:0m:40s
+Finish initializing candidate tree set (20)
+Current best tree score: -2503.219 / CPU time: 0.026
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+BETTER TREE FOUND at iteration 23: -2503.219
+Iteration 30 / LogL: -2503.223 / Time: 0h:0m:40s (0h:2m:8s left)
+Iteration 40 / LogL: -2508.592 / Time: 0h:0m:40s (0h:1m:25s left)
+BETTER TREE FOUND at iteration 45: -2503.219
+Iteration 50 / LogL: -2503.219 / Time: 0h:0m:40s (0h:1m:17s left)
+Iteration 60 / LogL: -2503.226 / Time: 0h:0m:40s (0h:0m:57s left)
+Iteration 70 / LogL: -2503.219 / Time: 0h:0m:40s (0h:0m:43s left)
+Iteration 80 / LogL: -2503.225 / Time: 0h:0m:40s (0h:0m:33s left)
+Iteration 90 / LogL: -2503.219 / Time: 0h:0m:40s (0h:0m:24s left)
+Iteration 100 / LogL: -2503.219 / Time: 0h:0m:40s (0h:0m:18s left)
+Iteration 110 / LogL: -2503.221 / Time: 0h:0m:40s (0h:0m:12s left)
+Iteration 120 / LogL: -2503.224 / Time: 0h:0m:40s (0h:0m:8s left)
+Iteration 130 / LogL: -2503.221 / Time: 0h:0m:40s (0h:0m:4s left)
+Iteration 140 / LogL: -2503.219 / Time: 0h:0m:40s (0h:0m:1s left)
+TREE SEARCH COMPLETED AFTER 146 ITERATIONS / Time: 0h:0m:40s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -2503.219
+Optimal log-likelihood: -2503.219
+Rate parameters:  A-C: 1.00000  A-G: 1.00000  A-T: 1.00000  C-G: 1.00000  C-T: 1.00000  G-T: 1.00000
+Base frequencies:  A: 0.250  C: 0.250  G: 0.250  T: 0.250
+Parameters optimization took 1 rounds (0.000 sec)
+BEST SCORE FOUND : -2503.219
+Total tree length: 0.007
+
+Total number of iterations: 146
+CPU time used for tree search: 0.078 sec (0h:0m:0s)
+Wall-clock time used for tree search: 0.095 sec (0h:0m:0s)
+Total CPU time used: 40.111 sec (0h:0m:40s)
+Total wall-clock time used: 40.274 sec (0h:0m:40s)
+
+Analysis results written to: 
+  IQ-TREE report:                JC.iqtree
+  Maximum-likelihood tree:       JC.treefile
+  Likelihood distances:          JC.mldist
+  Screen log file:               JC.log
+
+Date and Time: Tue Sep 10 15:24:47 2024
