@@ -1,3 +1,4 @@
 [deps]
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Git = "d7ba0133-e1db-5d97-8f8c-041e4b3a1eb2"
 RCall = "6f49c342-dc21-5d91-9882-a32aef131414"
