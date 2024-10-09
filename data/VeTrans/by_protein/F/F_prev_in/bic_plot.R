@@ -1,29 +1,26 @@
-library(csv)
 library(ggplot2)
 
 # Read the CSV file
-bic <- read.csv("/Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/VeTrans/by_protein/n_haps_F/F_prev_in/extracted_bic.csv")
-
-# Print the bic object to check its contents
-print(bic)
+bic <- read.csv("/Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/VeTrans/by_protein/F/F_prev_in/extracted_bic.csv")
 
 # Remove rows where BIC is NA
 bic <- bic[!is.na(bic), ]
 
-# Ensure that n_haps is treated as numeric and sort by n_haps
+# Ensure n_haps is numeric and sort by n_haps
 bic$n_haps <- as.numeric(as.character(bic$n_haps))
 bic <- bic[order(bic$n_haps), ]
 
-# Create the plot with points only (no lines) and dynamic axis and title
+# Create the plot
 bic_plot <- ggplot(bic, aes(x = n_haps, y = BIC)) +
   geom_point() +
   labs(title="F_prev_in", x="# Haplotypes", y="BIC") +
   theme_minimal()
 
-# Define the path for saving the plot
-output_file <- "/Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/VeTrans/by_protein/n_haps_F/F_prev_in/bic_plot.jpeg"
+# Save the plot
+ggsave("/Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/data/VeTrans/by_protein/F/F_prev_in/bic_plot.jpeg", plot = bic_plot, width = 8, height = 6)
 
-# Save the plot as a .jpeg file
-ggsave(output_file, plot = bic_plot, width = 8, height = 6)
+# Find the row with the lowest BIC
+min_bic <- bic[which.min(bic$BIC), ]
 
-# No need to plot the graph in the R script
+# Print the file with the lowest BIC
+cat("File with the lowest BIC:", min_bic$file, "\n")
