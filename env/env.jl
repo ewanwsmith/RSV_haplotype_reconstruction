@@ -21,6 +21,10 @@ using Images
 using FileIO
 using FilePathsBase
 using WebIO
+using CategoricalArrays
+using Distributions
+using Optim
+using Roots
 
 # load R dependencies
 R"""

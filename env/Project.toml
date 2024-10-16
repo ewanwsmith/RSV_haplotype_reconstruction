@@ -1,9 +1,13 @@
 [deps]
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+CategoricalArrays = "324d7699-5711-5eae-9e2f-1d82baa6b597"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
 FileIO = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
 FilePathsBase = "48062228-2e41-5def-b9a4-89aafe57970f"
 Git = "d7ba0133-e1db-5d97-8f8c-041e4b3a1eb2"
 Images = "916415d5-f1e6-5110-898d-aaa5f9f070e0"
+Optim = "429524aa-4258-5aef-a3af-852621145aeb"
 RCall = "6f49c342-dc21-5d91-9882-a32aef131414"
+Roots = "f2b01f46-fcfa-551c-844a-d8ac1e96c665"
 WebIO = "0f1e0344-ec1d-5b48-a673-e5cf874b6c29"
