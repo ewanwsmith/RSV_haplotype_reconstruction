@@ -1,8 +1,10 @@
 # Julia setup
-using Pkg, Logging
+using Pkg
+
+using Logging
 
 # Set the Julia environment path
-Julia_env_path = "/Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/env"
+Julia_env_path = "/Users/e.smith.5/Documents/PhD/RSV_project/RSV_haplotype_reconstruction/env/"
 
 # Create the folder if it doesn't exist using built-in Julia functions
 if !isdir(Julia_env_path)
