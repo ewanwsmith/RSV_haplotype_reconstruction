@@ -1,6 +1,5 @@
 # Julia setup
 using Pkg
-
 using Logging
 
 # Set the Julia environment path
@@ -28,39 +27,37 @@ using Distributions
 using Optim
 using Roots
 
-# load R dependencies
+# Load R dependencies
 R"""
-# Function to set CRAN mirror and ensure R can download packages
-chooseCRANmirror(ind=1) # Selects a default CRAN mirror
+# Set CRAN mirror quietly
+chooseCRANmirror(ind=1)
 
-# Install the devtools package if not already installed
+# Install necessary packages quietly
 if (!requireNamespace("devtools", quietly = TRUE))
-  install.packages("devtools")
+  install.packages("devtools", quiet = TRUE)
 
-# Load the devtools package
-library(devtools)
+library(devtools, quietly = TRUE)
 
-# Install ggplot2 and viridis with dependencies
-install.packages(c("ggplot2", "viridis", "tidyverse", "hrbrthemes", "plotly", "htmlwidgets", "ggridges", "aplot"), dependencies = TRUE)
+# Install packages quietly with dependencies
+install.packages(c("ggplot2", "viridis", "tidyverse", "hrbrthemes", "plotly", "htmlwidgets", "ggridges", "aplot"), dependencies = TRUE, quiet = TRUE)
 
-# Function to check and install missing packages
+# Function to check and install missing packages quietly
 install_if_missing <- function(package) {
     if (!requireNamespace(package, quietly = TRUE)) {
-        BiocManager::install(package)
-    } else {
-        message(paste(package, "is already installed."))
+        BiocManager::install(package, quiet = TRUE)
     }
 }
 
-# Ensure BiocManager is installed
+# Ensure BiocManager is installed quietly
 if (!requireNamespace("BiocManager", quietly = TRUE)) {
-    install.packages("BiocManager")
+    install.packages("BiocManager", quiet = TRUE)
 }
 
-# Install ggtree and treeio if not already installed
+# Install additional packages quietly
 install_if_missing("ggtree")
 install_if_missing("treeio")
 install_if_missing("ggtreeExtra")
+
 # Load the packages quietly
 suppressPackageStartupMessages({
   library("ggplot2")
@@ -76,5 +73,6 @@ suppressPackageStartupMessages({
   library("aplot")
 })
 """
-# Output setup complete message after the process
+
+# Display setup complete message
 display("Julia and R setup complete")
